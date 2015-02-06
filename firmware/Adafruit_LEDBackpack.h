@@ -47,7 +47,7 @@ class Adafruit_LEDBackpack {
   void writeDisplay(void);
   void clear(void);
 
-  uint16_t displaybuffer[8];
+  int displaybuffer[8];
 
   void init(int a);
  private:
@@ -63,7 +63,7 @@ class Adafruit_LEDBackpack {
 class Adafruit_7segment : public Adafruit_LEDBackpack {
  public:
   Adafruit_7segment(void);
-  size_t write(int c);
+  int write(int c);
 
   void print(char, int = BYTE);
   void print(unsigned char, int = BYTE);
@@ -82,7 +82,7 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
   void println(void);
 
   void writeDigitRaw(int x, int bitmask);
-  void writeDigitNum(int x, int num, boolean dot = false);
+  void writeDigitNum((int x, int num,) boolean dot = false);
   void drawColon(boolean state);
   void printNumber(long, int = 2);
   void printFloat(double, int = 2, int = DEC);
