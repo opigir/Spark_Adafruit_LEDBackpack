@@ -21,7 +21,7 @@
 #include "Adafruit_LEDBackpack.h"
 #include "Adafruit_GFX.h"
 
-static const uint8_t numbertable[] = { 
+static const int numbertable[] = { 
 	0x3F, /* 0 */
 	0x06, /* 1 */
 	0x5B, /* 2 */
@@ -40,14 +40,14 @@ static const uint8_t numbertable[] = {
 	0x71, /* F */
 };
 
-void Adafruit_LEDBackpack::setBrightness(uint8_t b) {
+void Adafruit_LEDBackpack::setBrightness(int b) {
   if (b > 15) b = 15;
   Wire.beginTransmission(i2c_addr);
   Wire.write(0xE0 | b);
   Wire.endTransmission();  
 }
 
-void Adafruit_LEDBackpack::blinkRate(uint8_t b) {
+void Adafruit_LEDBackpack::blinkRate(int b) {
   Wire.beginTransmission(i2c_addr);
   if (b > 3) b = 0; // turn off if not sure
   
@@ -58,7 +58,7 @@ void Adafruit_LEDBackpack::blinkRate(uint8_t b) {
 Adafruit_LEDBackpack::Adafruit_LEDBackpack(void) {
 }
 
-void Adafruit_LEDBackpack::begin(uint8_t _addr = 0x70) {
+void Adafruit_LEDBackpack::begin(int _addr = 0x70) {
   i2c_addr = _addr;
 
   Wire.begin();
@@ -73,9 +73,9 @@ void Adafruit_LEDBackpack::begin(uint8_t _addr = 0x70) {
 
 void Adafruit_LEDBackpack::writeDisplay(void) {
   Wire.beginTransmission(i2c_addr);
-  Wire.write((uint8_t)0x00); // start at address $00
+  Wire.write((int)0x00); // start at address $00
 
-  for (uint8_t i=0; i<8; i++) {
+  for (int i=0; i<8; i++) {
     Wire.write(displaybuffer[i] & 0xFF);    
     Wire.write(displaybuffer[i] >> 8);    
   }
@@ -83,7 +83,7 @@ void Adafruit_LEDBackpack::writeDisplay(void) {
 }
 
 void Adafruit_LEDBackpack::clear(void) {
-  for (uint8_t i=0; i<8; i++) {
+  for (int i=0; i<8; i++) {
     displaybuffer[i] = 0;
   }
 }
@@ -239,9 +239,9 @@ void  Adafruit_7segment::print(double n, int digits)
 }
 
 
-size_t Adafruit_7segment::write(uint8_t c) {
+size_t Adafruit_7segment::write(int c) {
 
-  uint8_t r = 0;
+  int r = 0;
 
   if (c == '\n') position = 0;
   if (c == '\r') position = 0;
@@ -257,7 +257,7 @@ size_t Adafruit_7segment::write(uint8_t c) {
   return r;
 }
 
-void Adafruit_7segment::writeDigitRaw(uint8_t d, uint8_t bitmask) {
+void Adafruit_7segment::writeDigitRaw(int d, int bitmask) {
   if (d > 4) return;
   displaybuffer[d] = bitmask;
 }
@@ -269,7 +269,7 @@ void Adafruit_7segment::drawColon(boolean state) {
     displaybuffer[2] = 0;
 }
 
-void Adafruit_7segment::writeDigitNum(uint8_t d, uint8_t num, boolean dot) {
+void Adafruit_7segment::writeDigitNum(int d, int num, boolean dot) {
   if (d > 4) return;
 
   writeDigitRaw(d, numbertable[num] | (dot << 7));
@@ -280,14 +280,14 @@ void Adafruit_7segment::print(long n, int base)
   printNumber(n, base);
 }
 
-void Adafruit_7segment::printNumber(long n, uint8_t base)
+void Adafruit_7segment::printNumber(long n, int base)
 {
     printFloat(n, 0, base);
 }
 
-void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base) 
+void Adafruit_7segment::printFloat(double n, int fracDigits, int base) 
 { 
-  uint8_t numericDigits = 4;   // available digits on display
+  int numericDigits = 4;   // available digits on display
   boolean isNegative = false;  // true if the number is negative
   
   // is the number negative?
@@ -327,7 +327,7 @@ void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
     
     if (displayNumber)  //if displayNumber is not 0
     {
-      for(uint8_t i = 0; displayNumber; ++i) {
+      for(int i = 0; displayNumber; ++i) {
         boolean displayDecimal = (fracDigits != 0 && i == fracDigits);
         writeDigitNum(displayPos--, displayNumber % base, displayDecimal);
         if(displayPos == 2) writeDigitRaw(displayPos--, 0x00);
@@ -347,7 +347,7 @@ void Adafruit_7segment::printFloat(double n, uint8_t fracDigits, uint8_t base)
 }
 
 void Adafruit_7segment::printError(void) {
-  for(uint8_t i = 0; i < SEVENSEG_DIGITS; ++i) {
+  for(int i = 0; i < SEVENSEG_DIGITS; ++i) {
     writeDigitRaw(i, (i == 2 ? 0x00 : 0x40));
   }
 }

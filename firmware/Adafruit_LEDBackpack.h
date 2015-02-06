@@ -45,17 +45,17 @@
 class Adafruit_LEDBackpack {
  public:
   Adafruit_LEDBackpack(void);
-  void begin(uint8_t _addr);
-  void setBrightness(uint8_t b);
-  void blinkRate(uint8_t b);
+  void begin(int _addr);
+  void setBrightness(int b);
+  void blinkRate(int b);
   void writeDisplay(void);
   void clear(void);
 
   uint16_t displaybuffer[8]; 
 
-  void init(uint8_t a);
+  void init(int a);
  private:
-  uint8_t i2c_addr;
+  int i2c_addr;
 };
 
 class Adafruit_8x8matrix : public Adafruit_LEDBackpack, public Adafruit_GFX {
@@ -86,7 +86,7 @@ class Adafruit_BicolorMatrix : public Adafruit_LEDBackpack, public Adafruit_GFX 
 class Adafruit_7segment : public Adafruit_LEDBackpack {
  public:
   Adafruit_7segment(void);
-  size_t write(uint8_t c);
+  size_t write(int c);
 
   void print(char, int = BYTE);
   void print(unsigned char, int = BYTE);
@@ -104,13 +104,13 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
   void println(double, int = 2);
   void println(void);
   
-  void writeDigitRaw(uint8_t x, uint8_t bitmask);
-  void writeDigitNum(uint8_t x, uint8_t num, boolean dot = false);
+  void writeDigitRaw(int x, int bitmask);
+  void writeDigitNum(int x, int num, boolean dot = false);
   void drawColon(boolean state);
-  void printNumber(long, uint8_t = 2);
-  void printFloat(double, uint8_t = 2, uint8_t = DEC);
+  void printNumber(long, int = 2);
+  void printFloat(double, int = 2, int = DEC);
   void printError(void);
 
  private:
-  uint8_t position;
+  int position;
 };
