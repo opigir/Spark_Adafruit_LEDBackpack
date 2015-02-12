@@ -82,7 +82,7 @@ class Adafruit_7segment : public Adafruit_LEDBackpack {
   void println(void);
 
   void writeDigitRaw(int x, int bitmask);
-  void writeDigitNum((int x, int num,) boolean dot = false);
+  void writeDigitNum(int x, int num, boolean dot = false);
   void drawColon(boolean state);
   void printNumber(long, int = 2);
   void printFloat(double, int = 2, int = DEC);
