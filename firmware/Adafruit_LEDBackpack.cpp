@@ -18,7 +18,7 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include "Adafruit_LEDBackpack.h"
+#include "Adafruit_LEDBackpack/Adafruit_LEDBackpack.h"
 
 static const int numbertable[] = {
 	0x3F, /* 0 */

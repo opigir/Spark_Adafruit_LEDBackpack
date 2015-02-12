@@ -19,7 +19,7 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include "Adafruit_LEDBackpack.h"
+#include "Adafruit_LEDBackpack/Adafruit_LEDBackpack.h"
 
 Adafruit_LEDBackpack matrix = Adafruit_LEDBackpack();
 
