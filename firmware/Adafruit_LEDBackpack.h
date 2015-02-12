@@ -62,31 +62,31 @@ class Adafruit_LEDBackpack {
 
 class Adafruit_7segment : public Adafruit_LEDBackpack {
  public:
-  Adafruit_7segment(void);
-  int write(int c);
+  Adafruit_7segment(void)
+  int write(int c)
 
-  void print(char, int = BYTE);
-  void print(unsigned char, int = BYTE);
-  void print(int, int = DEC);
-  void print(unsigned int, int = DEC);
-  void print(long, int = DEC);
-  void print(unsigned long, int = DEC);
-  void print(double, int = 2);
-  void println(char, int = BYTE);
-  void println(unsigned char, int = BYTE);
-  void println(int, int = DEC);
-  void println(unsigned int, int = DEC);
-  void println(long, int = DEC);
-  void println(unsigned long, int = DEC);
-  void println(double, int = 2);
-  void println(void);
+  void print(char, int = BYTE)
+  void print(unsigned char, int = BYTE)
+  void print(int, int = DEC)
+  void print(unsigned int, int = DEC)
+  void print(long, int = DEC)
+  void print(unsigned long, int = DEC)
+  void print(double, int = 2)
+  void println(char, int = BYTE)
+  void println(unsigned char, int = BYTE)
+  void println(int, int = DEC)
+  void println(unsigned int, int = DEC)
+  void println(long, int = DEC)
+  void println(unsigned long, int = DEC)
+  void println(double, int = 2)
+  void println(void)
 
-  void writeDigitRaw(int x, int bitmask);
-  void writeDigitNum(int x, int num, boolean dot = false);
-  void drawColon(boolean state);
-  void printNumber(long, int = 2);
-  void printFloat(double, int = 2, int = DEC);
-  void printError(void);
+  void writeDigitRaw(int x, int bitmask)
+  void writeDigitNum(int x, int num, boolean dot = false)
+  void drawColon(boolean state)
+  void printNumber(long, int = 2)
+  void printFloat(double, int = 2, int = DEC)
+  void printError(void)
 
  private:
   int position;
