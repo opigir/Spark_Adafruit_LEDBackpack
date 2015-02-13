@@ -41,9 +41,9 @@ static const int numbertable[] = {
 
 void Adafruit_LEDBackpack::setBrightness(int b) {
   if (b > 15) b = 15;
-  Wire.begin(i2c_addr);
+  Wire.beginTransmisson(i2c_addr);
   Wire.write(0xE0 | b);
-  Wire.end();
+  Wire.endTransmisson();
 }
 
 void Adafruit_LEDBackpack::blinkRate(int b) {

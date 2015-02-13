@@ -18,7 +18,7 @@
   Written by Limor Fried/Ladyada for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
-
+#include "application.h"
 #include "Adafruit_LEDBackpack.h"
 
 Adafruit_LEDBackpack matrix = Adafruit_LEDBackpack();
